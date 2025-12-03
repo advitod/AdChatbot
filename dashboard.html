@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AI Chatbot Builder</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Sidebar -->
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <h2>🤖 AI Builder</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">
+                    <span class="icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('my-bots')">
+                    <span class="icon">🤖</span>
+                    <span>My Bots</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('create-bot')">
+                    <span class="icon">➕</span>
+                    <span>Create New Bot</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('analytics')">
+                    <span class="icon">📈</span>
+                    <span>Analytics</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('integrations')">
+                    <span class="icon">🔗</span>
+                    <span>Integrations</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('settings')">
+                    <span class="icon">⚙️</span>
+                    <span>Settings</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="avatar">👤</div>
+                    <div class="user-info">
+                        <div class="user-name">John Doe</div>
+                        <div class="user-plan">Pro Plan</div>
+                    </div>
+                </div>
+                <a href="#" class="btn-logout">Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Header -->
+            <header class="dashboard-header">
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Welcome back! Here's what's happening with your bots</p>
+                </div>
+                <button class="btn-primary" onclick="showSection('create-bot')">+ Create New Bot</button>
+            </header>
+
+            <!-- Stats Overview -->
+            <section id="overview" class="section-content">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🤖</div>
+                        <div class="stat-info">
+                            <h3>Total Bots</h3>
+                            <p class="stat-number">3</p>
+                            <span class="stat-change positive">+1 this month</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💬</div>
+                        <div class="stat-info">
+                            <h3>Messages</h3>
+                            <p class="stat-number">1,247</p>
+                            <span class="stat-change positive">+23% vs last month</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-info">
+                            <h3>Users</h3>
+                            <p class="stat-number">428</p>
+                            <span class="stat-change positive">+15% vs last month</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-info">
+                            <h3>API Calls</h3>
+                            <p class="stat-number">8,240 / 10,000</p>
+                            <span class="stat-change">82% of limit</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="activity-section">
+                    <h2>Your AI Bots</h2>
+                    <div class="bots-grid">
+                        <div class="bot-card">
+                            <div class="bot-header">
+                                <div class="bot-icon">💼</div>
+                                <div class="bot-status active">● Active</div>
+                            </div>
+                            <h3>Customer Support Bot</h3>
+                            <p>Handles customer inquiries and support tickets</p>
+                            <div class="bot-stats">
+                                <span>542 conversations</span>
+                                <span>4.8★ rating</span>
+                            </div>
+                            <div class="bot-actions">
+                                <button class="btn-secondary btn-sm" onclick="editBot('support')">Edit</button>
+                                <button class="btn-primary btn-sm" onclick="viewAnalytics('support')">View Analytics</button>
+                            </div>
+                        </div>
+
+                        <div class="bot-card">
+                            <div class="bot-header">
+                                <div class="bot-icon">📚</div>
+                                <div class="bot-status active">● Active</div>
+                            </div>
+                            <h3>Knowledge Base Bot</h3>
+                            <p>Answers questions from your documentation</p>
+                            <div class="bot-stats">
+                                <span>324 conversations</span>
+                                <span>4.5★ rating</span>
+                            </div>
+                            <div class="bot-actions">
+                                <button class="btn-secondary btn-sm" onclick="editBot('kb')">Edit</button>
+                                <button class="btn-primary btn-sm" onclick="viewAnalytics('kb')">View Analytics</button>
+                            </div>
+                        </div>
+
+                        <div class="bot-card">
+                            <div class="bot-header">
+                                <div class="bot-icon">🛒</div>
+                                <div class="bot-status inactive">○ Draft</div>
+                            </div>
+                            <h3>Sales Assistant Bot</h3>
+                            <p>Helps customers with product recommendations</p>
+                            <div class="bot-stats">
+                                <span>0 conversations</span>
+                                <span>Not deployed</span>
+                            </div>
+                            <div class="bot-actions">
+                                <button class="btn-secondary btn-sm" onclick="editBot('sales')">Edit</button>
+                                <button class="btn-primary btn-sm" onclick="deployBot('sales')">Deploy</button>
+                            </div>
+                        </div>
+
+                        <div class="bot-card create-new" onclick="showSection('create-bot')">
+                            <div class="create-icon">➕</div>
+                            <h3>Create New Bot</h3>
+                            <p>Start building your next AI assistant</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Create Bot Section (Hidden by default) -->
+            <section id="create-bot" class="section-content" style="display: none;">
+                <h2>Create New AI Bot</h2>
+                <div class="create-bot-form">
+                    <div class="form-group">
+                        <label>Bot Name</label>
+                        <input type="text" class="form-control" placeholder="e.g., Customer Support Bot">
+                    </div>
+                    <div class="form-group">
+                        <label>Bot Description</label>
+                        <textarea class="form-control" rows="3" placeholder="What will this bot do?"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Choose AI Model</label>
+                        <select class="form-control">
+                            <option>GPT-4 (Most Advanced)</option>
+                            <option>GPT-3.5 (Faster & Cheaper)</option>
+                            <option>Claude 3.5 Sonnet</option>
+                            <option>Google Gemini Pro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Training Data</label>
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-icon">📁</div>
+                            <p>Drag & drop files or click to upload</p>
+                            <p class="upload-note">Supports: PDF, DOCX, TXT, CSV (Max 10MB)</p>
+                            <input type="file" id="fileInput" multiple hidden>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>System Prompt (Optional)</label>
+                        <textarea class="form-control" rows="4" placeholder="You are a helpful assistant that..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn-secondary" onclick="showSection('overview')">Cancel</button>
+                        <button class="btn-primary" onclick="createBot()">Create Bot</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics" class="section-content" style="display: none;">
+                <h2>Analytics & Insights</h2>
+                <div class="analytics-grid">
+                    <div class="chart-card">
+                        <h3>Conversation Volume</h3>
+                        <div class="chart-placeholder">
+                            <p>📊 Chart showing daily conversations</p>
+                            <p class="note">Integration: Use Chart.js or Google Charts</p>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>User Satisfaction</h3>
+                        <div class="chart-placeholder">
+                            <p>⭐ Average rating: 4.7/5.0</p>
+                            <p class="note">Based on 234 ratings this month</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="section-content" style="display: none;">
+                <h2>Settings</h2>
+                <div class="settings-form">
+                    <h3>API Configuration</h3>
+                    <div class="form-group">
+                        <label>OpenAI API Key</label>
+                        <input type="password" class="form-control" placeholder="sk-...">
+                        <p class="form-hint">Your API key is encrypted and secure</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Stripe API Key (for monetization)</label>
+                        <input type="password" class="form-control" placeholder="pk_live_...">
+                    </div>
+                    <h3>Account Settings</h3>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" value="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Current Plan</label>
+                        <p class="plan-info">Pro Plan - $29/month</p>
+                        <button class="btn-secondary btn-sm">Upgrade to Business</button>
+                    </div>
+                    <button class="btn-primary">Save Changes</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
